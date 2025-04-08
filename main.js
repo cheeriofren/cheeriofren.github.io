@@ -1,81 +1,85 @@
-// Loading Screen
+// Create Stars
+function createStars() {
+    const starsContainer = document.createElement('div');
+    starsContainer.className = 'stars-container';
+    document.body.appendChild(starsContainer);
+
+    for (let i = 0; i < 200; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.width = Math.random() * 3 + 'px';
+        star.style.height = star.style.width;
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        starsContainer.appendChild(star);
+    }
+}
+
+// Quantum Particles Animation
+function createQuantumParticles() {
+    const particlesContainer = document.createElement('div');
+    particlesContainer.className = 'particles-container';
+    document.body.appendChild(particlesContainer);
+
+    for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.width = Math.random() * 5 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Cosmic Text Animation
+function animateCosmicText() {
+    const elements = document.querySelectorAll('.animate-text');
+    elements.forEach(element => {
+        const text = element.textContent;
+        element.innerHTML = '';
+        
+        for (let i = 0; i < text.length; i++) {
+            const span = document.createElement('span');
+            span.textContent = text[i];
+            span.style.animationDelay = i * 0.1 + 's';
+            element.appendChild(span);
+        }
+    });
+}
+
+// Initialize all animations
 window.addEventListener('load', () => {
+    // Remove loading screen
     const loading = document.querySelector('.loading');
     loading.style.opacity = '0';
     setTimeout(() => {
         loading.style.display = 'none';
     }, 500);
+
+    // Initialize animations
+    createStars();
+    createQuantumParticles();
+    animateCosmicText();
 });
 
-// Particles Background
-particlesJS('particles-js', {
-    particles: {
-        number: {
-            value: 80,
-            density: {
-                enable: true,
-                value_area: 800
-            }
-        },
-        color: {
-            value: '#ffffff'
-        },
-        shape: {
-            type: 'circle'
-        },
-        opacity: {
-            value: 0.5,
-            random: true
-        },
-        size: {
-            value: 3,
-            random: true
-        },
-        line_linked: {
-            enable: true,
-            distance: 150,
-            color: '#ffffff',
-            opacity: 0.4,
-            width: 1
-        },
-        move: {
-            enable: true,
-            speed: 2,
-            direction: 'none',
-            random: true,
-            straight: false,
-            out_mode: 'out',
-            bounce: false
-        }
-    },
-    interactivity: {
-        detect_on: 'canvas',
-        events: {
-            onhover: {
-                enable: true,
-                mode: 'grab'
-            },
-            onclick: {
-                enable: true,
-                mode: 'push'
-            },
-            resize: true
-        }
-    },
-    retina_detect: true
-});
-
-// Smooth Scrolling
+// Smooth Scrolling with Cosmic Effect
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+        const target = document.querySelector(this.getAttribute('href'));
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+        
+        window.scrollTo({
+            top: targetPosition,
             behavior: 'smooth'
         });
     });
 });
 
-// Scroll Animation
+// Scroll Animation with Quantum Effect
 const animateOnScroll = () => {
     const elements = document.querySelectorAll('.animate-text, .project-card, .timeline-item');
     
@@ -85,13 +89,15 @@ const animateOnScroll = () => {
         
         if(elementPosition < screenPosition) {
             element.classList.add('animate');
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
         }
     });
 };
 
 window.addEventListener('scroll', animateOnScroll);
 
-// Form Validation
+// Form Validation with Cosmic Feedback
 const contactForm = document.querySelector('.contact-form form');
 if(contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -102,14 +108,21 @@ if(contactForm) {
         const message = contactForm.querySelector('textarea').value;
         
         if(name && email && message) {
-            // Here you would typically send the form data to a server
-            alert('Your message has been sent successfully!');
-            contactForm.reset();
+            // Create cosmic feedback effect
+            const feedback = document.createElement('div');
+            feedback.className = 'cosmic-feedback';
+            feedback.textContent = 'Message sent successfully!';
+            contactForm.appendChild(feedback);
+            
+            setTimeout(() => {
+                feedback.remove();
+                contactForm.reset();
+            }, 3000);
         }
     });
 }
 
-// Mobile Menu Toggle
+// Mobile Menu with Cosmic Transition
 const createMobileMenu = () => {
     const header = document.querySelector('header');
     const nav = document.querySelector('nav ul');
@@ -130,7 +143,7 @@ if(window.innerWidth <= 768) {
     createMobileMenu();
 }
 
-// Responsive adjustments
+// Responsive adjustments with Cosmic Transitions
 window.addEventListener('resize', () => {
     if(window.innerWidth <= 768) {
         if(!document.querySelector('.mobile-menu-button')) {

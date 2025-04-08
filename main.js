@@ -50,113 +50,184 @@ function animateCosmicText() {
     });
 }
 
-// Initialize all animations
-window.addEventListener('load', () => {
-    // Remove loading screen
-    const loading = document.querySelector('.loading');
-    loading.style.opacity = '0';
-    setTimeout(() => {
-        loading.style.display = 'none';
-    }, 500);
-
-    // Initialize animations
-    createStars();
-    createQuantumParticles();
-    animateCosmicText();
+// Performance optimized initialization
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize core features
+    initializeCore();
+    
+    // Initialize optional features based on viewport
+    if (window.innerWidth > 768) {
+        initializeDesktopFeatures();
+    }
+    
+    // Initialize mobile features if needed
+    if (window.innerWidth <= 768) {
+        initializeMobileFeatures();
+    }
 });
 
-// Smooth Scrolling with Cosmic Effect
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
-        
+// Core features that run on all devices
+function initializeCore() {
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', handleSmoothScroll);
+    });
+
+    // Form validation
+    const contactForm = document.querySelector('.contact-form form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleFormSubmit);
+    }
+
+    // Basic animations
+    initializeBasicAnimations();
+}
+
+// Desktop-only features
+function initializeDesktopFeatures() {
+    // Parallax effect with throttling
+    let ticking = false;
+    const hero = document.querySelector('.hero');
+    
+    if (hero) {
+        window.addEventListener('mousemove', (e) => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleParallax(e, hero);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+
+    // Card hover effects with delegation
+    const projectsGrid = document.querySelector('.projects-grid');
+    if (projectsGrid) {
+        projectsGrid.addEventListener('mousemove', handleCardHover);
+    }
+}
+
+// Mobile-specific features
+function initializeMobileFeatures() {
+    // Mobile menu
+    const menuButton = document.querySelector('.mobile-menu-button');
+    const nav = document.querySelector('nav ul');
+    
+    if (menuButton && nav) {
+        menuButton.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuButton.classList.toggle('active');
+        });
+    }
+}
+
+// Basic animations with minimal impact
+function initializeBasicAnimations() {
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '50px'
+    });
+
+    // Observe elements
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        observer.observe(element);
+    });
+}
+
+// Event Handlers
+function handleSmoothScroll(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+        const headerOffset = 100;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
         window.scrollTo({
-            top: targetPosition,
+            top: offsetPosition,
             behavior: 'smooth'
         });
-    });
-});
-
-// Scroll Animation with Quantum Effect
-const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.animate-text, .project-card, .timeline-item');
-    
-    elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        
-        if(elementPosition < screenPosition) {
-            element.classList.add('animate');
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }
-    });
-};
-
-window.addEventListener('scroll', animateOnScroll);
-
-// Form Validation with Cosmic Feedback
-const contactForm = document.querySelector('.contact-form form');
-if(contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const name = contactForm.querySelector('input[type="text"]').value;
-        const email = contactForm.querySelector('input[type="email"]').value;
-        const message = contactForm.querySelector('textarea').value;
-        
-        if(name && email && message) {
-            // Create cosmic feedback effect
-            const feedback = document.createElement('div');
-            feedback.className = 'cosmic-feedback';
-            feedback.textContent = 'Message sent successfully!';
-            contactForm.appendChild(feedback);
-            
-            setTimeout(() => {
-                feedback.remove();
-                contactForm.reset();
-            }, 3000);
-        }
-    });
-}
-
-// Mobile Menu with Cosmic Transition
-const createMobileMenu = () => {
-    const header = document.querySelector('header');
-    const nav = document.querySelector('nav ul');
-    const menuButton = document.createElement('button');
-    menuButton.classList.add('mobile-menu-button');
-    menuButton.innerHTML = '<span></span><span></span><span></span>';
-    
-    header.insertBefore(menuButton, nav);
-    
-    menuButton.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        menuButton.classList.toggle('active');
-    });
-};
-
-// Initialize mobile menu if on mobile device
-if(window.innerWidth <= 768) {
-    createMobileMenu();
-}
-
-// Responsive adjustments with Cosmic Transitions
-window.addEventListener('resize', () => {
-    if(window.innerWidth <= 768) {
-        if(!document.querySelector('.mobile-menu-button')) {
-            createMobileMenu();
-        }
-    } else {
-        const mobileMenu = document.querySelector('.mobile-menu-button');
-        if(mobileMenu) {
-            mobileMenu.remove();
-        }
-        const nav = document.querySelector('nav ul');
-        if(nav) {
-            nav.classList.remove('active');
-        }
     }
+}
+
+function handleFormSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const inputs = form.querySelectorAll('input, textarea');
+    let isValid = true;
+
+    inputs.forEach(input => {
+        if (!input.value.trim()) {
+            isValid = false;
+            input.classList.add('error');
+        } else {
+            input.classList.remove('error');
+        }
+    });
+
+    if (isValid) {
+        showFeedback('Message sent successfully!');
+        form.reset();
+    }
+}
+
+function handleParallax(e, element) {
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
+    element.style.backgroundPosition = `${x * 50}% ${y * 50}%`;
+}
+
+function handleCardHover(e) {
+    const card = e.target.closest('.project-card');
+    if (card) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    }
+}
+
+// Utility Functions
+function showFeedback(message) {
+    const feedback = document.createElement('div');
+    feedback.className = 'cosmic-feedback';
+    feedback.textContent = message;
+    document.body.appendChild(feedback);
+
+    setTimeout(() => {
+        feedback.style.opacity = '0';
+        setTimeout(() => feedback.remove(), 300);
+    }, 2000);
+}
+
+// Optimized resize handler
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        if (window.innerWidth <= 768) {
+            if (!document.querySelector('.mobile-menu-button')) {
+                initializeMobileFeatures();
+            }
+        } else {
+            const mobileMenu = document.querySelector('.mobile-menu-button');
+            const nav = document.querySelector('nav ul');
+            if (mobileMenu) {
+                mobileMenu.remove();
+            }
+            if (nav) {
+                nav.classList.remove('active');
+            }
+        }
+    }, 250);
 }); 

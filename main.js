@@ -103,7 +103,7 @@ if(contactForm) {
         
         if(name && email && message) {
             // Here you would typically send the form data to a server
-            alert('Pesan Anda telah terkirim!');
+            alert('Your message has been sent successfully!');
             contactForm.reset();
         }
     });

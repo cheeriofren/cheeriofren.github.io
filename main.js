@@ -50,23 +50,18 @@ function animateCosmicText() {
     });
 }
 
-// Performance optimized initialization
+// Optimized JavaScript
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize core features
     initializeCore();
     
-    // Initialize optional features based on viewport
-    if (window.innerWidth > 768) {
-        initializeDesktopFeatures();
-    }
-    
-    // Initialize mobile features if needed
-    if (window.innerWidth <= 768) {
-        initializeMobileFeatures();
-    }
+    // Load non-critical features after initial render
+    requestIdleCallback(() => {
+        initializeNonCriticalFeatures();
+    });
 });
 
-// Core features that run on all devices
+// Core features that run immediately
 function initializeCore() {
     // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -78,57 +73,26 @@ function initializeCore() {
     if (contactForm) {
         contactForm.addEventListener('submit', handleFormSubmit);
     }
-
-    // Basic animations
-    initializeBasicAnimations();
 }
 
-// Desktop-only features
-function initializeDesktopFeatures() {
-    // Parallax effect with throttling
-    let ticking = false;
-    const hero = document.querySelector('.hero');
+// Non-critical features that load after initial render
+function initializeNonCriticalFeatures() {
+    // Initialize scroll animations
+    initializeScrollAnimations();
     
-    if (hero) {
-        window.addEventListener('mousemove', (e) => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    handleParallax(e, hero);
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }
-
-    // Card hover effects with delegation
-    const projectsGrid = document.querySelector('.projects-grid');
-    if (projectsGrid) {
-        projectsGrid.addEventListener('mousemove', handleCardHover);
-    }
-}
-
-// Mobile-specific features
-function initializeMobileFeatures() {
-    // Mobile menu
-    const menuButton = document.querySelector('.mobile-menu-button');
-    const nav = document.querySelector('nav ul');
+    // Initialize hover effects
+    initializeHoverEffects();
     
-    if (menuButton && nav) {
-        menuButton.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            menuButton.classList.toggle('active');
-        });
-    }
+    // Load images lazily
+    initializeLazyLoading();
 }
 
-// Basic animations with minimal impact
-function initializeBasicAnimations() {
-    // Intersection Observer for scroll animations
+// Optimized scroll animations
+function initializeScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
@@ -137,10 +101,42 @@ function initializeBasicAnimations() {
         rootMargin: '50px'
     });
 
-    // Observe elements
     document.querySelectorAll('.animate-on-scroll').forEach(element => {
         observer.observe(element);
     });
+}
+
+// Optimized hover effects
+function initializeHoverEffects() {
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-3px)';
+            card.style.boxShadow = 'var(--shadow-lg)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = 'var(--shadow)';
+        });
+    });
+}
+
+// Lazy loading for images
+function initializeLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    images.forEach(img => imageObserver.observe(img));
 }
 
 // Event Handlers
@@ -177,23 +173,6 @@ function handleFormSubmit(e) {
     if (isValid) {
         showFeedback('Message sent successfully!');
         form.reset();
-    }
-}
-
-function handleParallax(e, element) {
-    const x = e.clientX / window.innerWidth;
-    const y = e.clientY / window.innerHeight;
-    element.style.backgroundPosition = `${x * 50}% ${y * 50}%`;
-}
-
-function handleCardHover(e) {
-    const card = e.target.closest('.project-card');
-    if (card) {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
     }
 }
 

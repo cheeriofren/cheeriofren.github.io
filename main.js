@@ -213,60 +213,205 @@ window.addEventListener('resize', () => {
 
 // Initialize Particles.js
 document.addEventListener('DOMContentLoaded', () => {
+    // Intersection Observer for timeline items
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+    
+    // Observe timeline items
+    document.querySelectorAll('.timeline-item').forEach(item => {
+        observer.observe(item);
+    });
+    
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+    
+    // Particles.js configuration
     particlesJS('particles-js', {
         particles: {
-            number: { value: 80 },
-            color: { value: '#2563eb' },
-            shape: { type: 'circle' },
-            opacity: {
-                value: 0.5,
-                random: false
-            },
-            size: {
-                value: 3,
-                random: true
-            },
-            line_linked: {
-                enable: true,
-                distance: 150,
-                color: '#2563eb',
-                opacity: 0.4,
-                width: 1
-            },
-            move: {
-                enable: true,
-                speed: 2
-            }
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: '#ffffff' },
+            opacity: { value: 0.5, random: false },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 3, direction: 'none', random: false, straight: false, out_mode: 'out' }
         },
         interactivity: {
+            detect_on: 'canvas',
             events: {
-                onhover: {
-                    enable: true,
-                    mode: 'grab'
-                }
+                onhover: { enable: true, mode: 'repulse' },
+                resize: true
             }
-        }
+        },
+        retina_detect: true
     });
 
     // Handle loading screen
     window.addEventListener('load', () => {
-        const loader = document.querySelector('.loading');
-        loader.style.opacity = '0';
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 500);
+        // Optimized Loading Screen
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.querySelector('.loading');
+            setTimeout(() => {
+                loader.classList.add('fade-out');
+                setTimeout(() => loader.remove(), 500);
+            }, 800);
+        });
+        
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.classList.contains('counter-number')) {
+                        animateCounter(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Optimized Particle Configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 50, density: { enable: true, value_area: 800 } },
+                color: { value: '#ffffff' },
+                shape: { type: 'circle' },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: { enable: false }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: { enable: false }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#ffffff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    resize: true
+                },
+                modes: {
+                    repulse: { distance: 100, duration: 0.4 }
+                }
+            },
+            retina_detect: true
+        });
+        
+        // Form Validation with Feedback
+        const validateForm = (event) => {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const feedback = document.createElement('div');
+            
+            try {
+                // Add your form submission logic here
+                feedback.className = 'form-feedback success';
+                feedback.textContent = 'Message sent successfully!';
+                form.reset();
+            } catch (error) {
+                feedback.className = 'form-feedback error';
+                feedback.textContent = 'Something went wrong. Please try again.';
+            }
+            
+            form.appendChild(feedback);
+            setTimeout(() => feedback.remove(), 3000);
+        };
     });
-
-    // Animate elements on scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
+    
+    // Dark Mode Toggle
+    const toggleTheme = () => {
+        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    };
+    
+    // Skills Animation
+    const animateSkills = () => {
+        document.querySelectorAll('.progress-bar').forEach(bar => {
+            const progress = bar.getAttribute('data-progress');
+            bar.style.width = `${progress}%`;
+        });
+    };
+    
+    // Project Filtering
+    const filterProjects = (category) => {
+        const projects = document.querySelectorAll('.project-card');
+        projects.forEach(project => {
+            const shouldShow = category === 'all' || project.dataset.category === category;
+            project.style.display = shouldShow ? 'block' : 'none';
+        });
+    };
+    
+    // Form Validation
+    const validateForm = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const inputs = form.querySelectorAll('input, textarea');
+        let isValid = true;
+    
+        inputs.forEach(input => {
+            const errorMessage = input.nextElementSibling;
+            if (!input.value.trim()) {
+                showError(input, 'This field is required');
+                isValid = false;
+            } else if (input.type === 'email' && !isValidEmail(input.value)) {
+                showError(input, 'Please enter a valid email');
+                isValid = false;
+            } else {
+                removeError(input);
             }
         });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.animate-text, .timeline-item, .project-card').forEach(el => {
-        observer.observe(el);
-    });
-});
+    
+        if (isValid) {
+            showSuccessMessage();
+            form.reset();
+        }
+    };
+    
+    // Mobile Navigation
+    const toggleMobileNav = () => {
+        const nav = document.querySelector('nav ul');
+        const hamburger = document.querySelector('.hamburger');
+        nav.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    };

@@ -9,7 +9,6 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style">
     <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="main.js" as="script">
     
     <!-- Load Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,10 +16,12 @@
     
     <!-- Load CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     
     <!-- Load JavaScript -->
     <script src="main.js" defer></script>
-    <script src="https://kit.fontawesome.com/d25bf8c1f5.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/84d7adb544.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -32,18 +33,24 @@
     <div id="particles-js"></div>
 
     <!-- Header -->
+    <!-- Add theme toggle button to header -->
     <header>
         <nav>
             <div class="logo">
                 <span class="animate-text">MRAS</span>
             </div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -52,7 +59,7 @@
         <div class="hero-content">
             <h1 class="animate-text">Muhammad Ridha Akhsanu Sujiono</h1>
             <h2>Physicist & Material Engineer</h2>
-            <p>Transforming laboratory breakthroughs into real-world solutions</p>
+            <p>Bridging science, advocacy, and innovation for a sustainable future</p>
             <div class="cta-buttons">
                 <a href="#contact" class="btn hover-effect">Get in Touch</a>
                 <a href="#projects" class="btn hover-effect">View Projects</a>
@@ -67,39 +74,20 @@
             <div class="about-grid">
                 <div class="about-text">
                     <p>👋 Hi, I'm Akhsa!</p>
-                    <p>A dedicated physics and materials engineering student researcher obsessed with turning lab breakthroughs into real-world solutions. I bridge science and advocacy to build a better and sustainable future.</p>
+                    <p>A physics and materials engineering student researcher passionate about transforming laboratory breakthroughs into real-world solutions. I bridge science and advocacy to build a better and sustainable future.</p>
                     
                     <h3>Current Focus</h3>
-                    <ul>
-                        <li>🔬 Engineering Tomorrow's Materials: Designing perovskite-inspired solar cells and sustainable technology to redefine energy access with The Knowledge Society.</li>
-                        <li>🤖 Harnessing AI for Good: Using technology at MIT's AI for Energy and AI4impact to predict climate risks and optimize renewable energy.</li>
-                        <li>✍️ Writing Science into Stories: Translating complex research into actionable ideas—because innovation thrives when everyone understands it, not just stays in journals.</li>
+                    <ul class="feature-list">
+                        <li>🔬 Engineering Tomorrow's Materials: Designing perovskite-inspired solar cells and sustainable tech to redefine energy access with The Knowledge Society.</li>
+                        <li>🤖 Harnessing AI for Good: Using tech at MIT's AI for Energy and AI4impact to predict climate risks and optimize renewables.</li>
+                        <li>✍️ Writing Science into Stories: Translating complex research into actionable ideas—because innovation thrives when everyone gets it, not just stay in journals.</li>
                     </ul>
 
-                    <h3>Core Competencies</h3>
-                    <ul>
-                        <li>📊 Data Analysis & Modeling: Using Python, TensorFlow, and computational tools for data analysis and prediction.</li>
-                        <li>🔍 Material Characterization: Experience in modern material characterization techniques and microscopic analysis.</li>
-                        <li>🌱 Sustainability & Energy: Specialization in renewable energy technology and sustainable solutions.</li>
-                        <li>📝 Scientific Writing: Ability to write and present scientific research for various audiences.</li>
-                    </ul>
-
-                    <h3>Research Interests</h3>
-                    <ul>
-                        <li>Materials for Renewable Energy</li>
-                        <li>Material Physics</li>
-                        <li>Computational Materials</li>
-                        <li>Sustainable Technology</li>
-                        <li>AI for Science</li>
-                    </ul>
-
-                    <h3>Let's Collaborate If You:</h3>
-                    <ul>
-                        <li>Build (technology, policy, or innovation)</li>
-                        <li>Teach (science, writing, or quantum mechanics)</li>
-                        <li>Dream (sustainability, ethical AI, or space-related stuff)</li>
-                        <li>Believe that innovation needs both equations and empathy</li>
-                        <li>Want to nerd out about science, physics, materials, or even why quantum dots are cooler than TikTok</li>
+                    <h3>My Playgrounds</h3>
+                    <ul class="feature-list">
+                        <li>🌍 Global Advocacy: Safeguarding digital rights (@5Rights), co-designing climate policy with YOUNGO, and fighting for education equity (@Theirworld) as a Youth Ambassador.</li>
+                        <li>🚀 Cosmic Curiosity: Analyzing exoplanet data with NASA and hunting neutron stars via Einstein@Home.</li>
+                        <li>💧 Grassroots Impact: Built resilient water-harvesting systems for climate-hit villages.</li>
                     </ul>
                 </div>
             </div>
@@ -110,49 +98,207 @@
     <section id="experience" class="experience">
         <h2 class="section-title animate-text">Experience</h2>
         <div class="timeline">
-            <div class="timeline-item">
+            <!-- AI for Energy Solution -->
+            <div class="timeline-item" data-aos="fade-right">
                 <div class="timeline-content hover-effect">
-                    <h3>Research Assistant</h3>
-                    <p class="timeline-date">2022 - Present</p>
-                    <p>Conducting research in advanced materials and quantum physics applications.</p>
+                    <div class="timeline-header">
+                        <img src="images/mit-logo.png" alt="MIT Logo" class="organization-logo">
+                        <h3>AI for Energy Solution</h3>
+                        <span class="organization">Massachusetts Institute of Technology</span>
+                        <p class="timeline-date">January 2025</p>
+                    </div>
+                    <div class="timeline-body">
+                        <div class="tags">
+                            <span class="tag">AI</span>
+                            <span class="tag">Energy</span>
+                            <span class="tag">Innovation</span>
+                        </div>
+                        <ul class="achievement-list">
+                            <li>Selected for MIT's prestigious AI for Energy Solutions Program</li>
+                            <li>Developed AI-powered prototypes using low-code/no-code tools</li>
+                            <li>Collaborated with global experts in energy innovation</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <!-- Add more timeline items as needed -->
+
+            <!-- En-ROADS Climate Ambassador -->
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-content hover-effect">
+                    <div class="timeline-header">
+                        <img src="images/climate-interactive-logo.png" alt="Climate Interactive Logo" class="organization-logo">
+                        <h3>En-ROADS Climate Ambassador</h3>
+                        <span class="organization">Climate Interactive</span>
+                        <p class="timeline-date">September 2024 - February 2025</p>
+                    </div>
+                    <div class="timeline-body">
+                        <div class="highlight-box">
+                            <span class="highlight-icon">🌍</span>
+                            <p>Engaged 300+ students in climate action</p>
+                        </div>
+                        <ul class="achievement-list">
+                            <li>Organized 3 community climate action events</li>
+                            <li>Facilitated discussions with 10 local organizations</li>
+                            <li>Led workshops on climate mitigation strategies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEAD+ Program -->
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-content hover-effect">
+                    <div class="timeline-header">
+                        <img src="images/undp-logo.png" alt="UNDP Logo" class="organization-logo">
+                        <h3>Leadership Development Program</h3>
+                        <span class="organization">UNDP Indonesia & Mereka Education</span>
+                        <p class="timeline-date">February 2025</p>
+                    </div>
+                    <div class="timeline-body">
+                        <ul class="achievement-list">
+                            <li>Enhanced leadership and communication skills through intensive training</li>
+                            <li>Developed project management expertise with AI tools</li>
+                            <li>Engaged in peer education and mentorship activities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <h2 class="section-title animate-text">Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card hover-effect">
-                <h3>Quantum Material Research</h3>
-                <p>Research on novel quantum materials for next-generation computing applications.</p>
-                <a href="#" class="project-link">Learn More</a>
+    <!-- After About Section and before Experience Section -->
+    <section id="skills" class="skills">
+        <h2 class="section-title animate-text">Skills & Expertise</h2>
+        <div class="skills-container">
+            <div class="skills-category" data-aos="fade-up">
+                <h3>Technical Skills</h3>
+                <div class="skill-bars">
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span>Data Analysis & AI</span>
+                            <span class="percentage">90%</span>
+                        </div>
+                        <div class="progress-bar" data-progress="90"></div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span>Material Characterization</span>
+                            <span class="percentage">85%</span>
+                        </div>
+                        <div class="progress-bar" data-progress="85"></div>
+                    </div>
+                </div>
             </div>
-            <!-- Add more project cards as needed -->
+            
+            <div class="skills-category" data-aos="fade-up" data-aos-delay="200">
+                <h3>Research & Innovation</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Quantum Physics</span>
+                    <span class="skill-tag">Renewable Energy</span>
+                    <span class="skill-tag">Sustainable Tech</span>
+                    <span class="skill-tag">AI Applications</span>
+                    <span class="skill-tag">Scientific Writing</span>
+                </div>
+            </div>
         </div>
     </section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects">
+    <h2 class="section-title animate-text">Featured Projects</h2>
+    
+    <!-- Achievement Counters -->
+    <div class="achievement-counter">
+        <div class="counter-item" data-aos="fade-up">
+            <span class="counter-number" data-target="300">0</span>
+            <p>Students Engaged</p>
+        </div>
+        <div class="counter-item" data-aos="fade-up" data-aos-delay="100">
+            <span class="counter-number" data-target="10">0</span>
+            <p>Organizations Impacted</p>
+        </div>
+        <div class="counter-item" data-aos="fade-up" data-aos-delay="200">
+            <span class="counter-number" data-target="5">0</span>
+            <p>Climate Workshops</p>
+        </div>
+    </div>
+
+    <!-- Project Filters -->
+    <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="research">Research</button>
+        <button class="filter-btn" data-filter="climate">Climate Action</button>
+        <button class="filter-btn" data-filter="ai">AI Solutions</button>
+    </div>
+
+    <!-- Project Grid -->
+    <div class="projects-grid">
+        <!-- MIT AI Project -->
+        <div class="project-card" data-category="ai">
+            <div class="project-content">
+                <h3>AI for Energy Solutions</h3>
+                <p>Developing AI-powered solutions for energy optimization and climate risk prediction at MIT.</p>
+                <div class="project-tags">
+                    <span class="tag">AI</span>
+                    <span class="tag">Energy</span>
+                    <span class="tag">Innovation</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Climate Interactive Project -->
+        <div class="project-card" data-category="climate">
+            <div class="project-content">
+                <h3>En-ROADS Climate Simulation</h3>
+                <p>Leading community engagement through climate simulation workshops and policy discussions.</p>
+                <div class="project-tags">
+                    <span class="tag">Climate</span>
+                    <span class="tag">Education</span>
+                    <span class="tag">Policy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Contact Section -->
+    <!-- Enhanced Contact Form -->
     <section id="contact" class="contact">
         <h2 class="section-title animate-text">Contact Me</h2>
         <div class="contact-form">
-            <form>
+            <form id="contactForm" novalidate>
                 <div class="form-group">
-                    <input type="text" placeholder="Name" required>
+                    <label for="name" class="visually-hidden">Name</label>
+                    <input type="text" id="name" placeholder="Name" required
+                           aria-describedby="nameError">
+                    <div class="error-message" id="nameError"></div>
                 </div>
                 <div class="form-group">
-                    <input type="email" placeholder="Email" required>
+                    <label for="email" class="visually-hidden">Email</label>
+                    <input type="email" id="email" placeholder="Email" required
+                           aria-describedby="emailError">
+                    <div class="error-message" id="emailError"></div>
                 </div>
                 <div class="form-group">
-                    <textarea placeholder="Message" required></textarea>
+                    <label for="message" class="visually-hidden">Message</label>
+                    <textarea id="message" placeholder="Message" required
+                              aria-describedby="messageError"></textarea>
+                    <div class="error-message" id="messageError"></div>
                 </div>
-                <button type="submit" class="btn hover-effect">Send Message</button>
+                <button type="submit" class="btn hover-effect">
+                    <span class="btn-text">Send Message</span>
+                    <span class="btn-loader"></span>
+                </button>
             </form>
         </div>
     </section>
 
+    <!-- Interactive Skills Visualization -->
+    <div class="skills-visualization">
+        <canvas id="skillsCanvas"></canvas>
+        <div class="skills-legend"></div>
+    </div>
+    
     <!-- Footer -->
     <footer>
         <div class="social-links">

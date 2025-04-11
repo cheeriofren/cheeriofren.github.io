@@ -1,18 +1,5 @@
-# File sistem
 .DS_Store
-Thumbs.db
-
-# File editor
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# File dependensi
 node_modules/
 .env
-.env.local
-
-# File build
-dist/
-build/ 
+.vscode/
+*.log

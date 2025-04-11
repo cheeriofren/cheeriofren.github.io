@@ -209,4 +209,64 @@ window.addEventListener('resize', () => {
             }
         }
     }, 250);
-}); 
+});
+
+// Initialize Particles.js
+document.addEventListener('DOMContentLoaded', () => {
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80 },
+            color: { value: '#2563eb' },
+            shape: { type: 'circle' },
+            opacity: {
+                value: 0.5,
+                random: false
+            },
+            size: {
+                value: 3,
+                random: true
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#2563eb',
+                opacity: 0.4,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 2
+            }
+        },
+        interactivity: {
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: 'grab'
+                }
+            }
+        }
+    });
+
+    // Handle loading screen
+    window.addEventListener('load', () => {
+        const loader = document.querySelector('.loading');
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    });
+
+    // Animate elements on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-text, .timeline-item, .project-card').forEach(el => {
+        observer.observe(el);
+    });
+});

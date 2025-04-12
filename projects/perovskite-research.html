@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perovskite Research | MRAS</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="quantum-effects.js"></script>
+    <script src="perovskite-research.js"></script>
+    <script>
+        // Initialize visualization when the page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            initVisualization();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="../index.html" class="animate-text">MRAS</a>
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <ul>
+                    <li><a href="index.html">Projects</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        <section class="project-hero">
+            <h1>Defect Engineering in Perovskite Materials</h1>
+            <p class="project-subtitle">Advancing High-Efficiency and Stable Solar Cells</p>
+        </section>
+
+        <section class="project-content">
+            <div class="visualization-section">
+                <h2>Crystal Structure Visualization</h2>
+                <div class="model-container" id="perovskiteModel"></div>
+                <div class="model-controls">
+                    <button id="showDefects" class="quantum-btn">Show Defects</button>
+                    <button id="rotateStructure" class="quantum-btn">Rotate Structure</button>
+                    <button id="showBonds" class="quantum-btn">Show Bonds</button>
+                    <button id="toggleQuantum" class="quantum-btn">Toggle Quantum Effects</button>
+                    <button id="showElectronCloud" class="quantum-btn">Show Electron Cloud</button>
+                </div>
+                <div class="visualization-info">
+                    <p>Interactive 3D visualization of perovskite crystal structure with quantum mechanical effects</p>
+                    <ul>
+                        <li>Electron cloud visualization</li>
+                        <li>Defect dynamics simulation</li>
+                        <li>Quantum tunneling effects</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="research-methodology">
+                <h2>Research Methodology</h2>
+                <div class="methodology-grid">
+                    <div class="methodology-item">
+                        <h3>Material Synthesis</h3>
+                        <p>Development of non-toxic perovskite-inspired materials using advanced synthesis techniques to achieve optimal crystal structure and stability.</p>
+                    </div>
+                    <div class="methodology-item">
+                        <h3>Defect Analysis</h3>
+                        <p>Investigation of defect formation mechanisms and their impact on charge carrier dynamics using state-of-the-art characterization methods.</p>
+                    </div>
+                    <div class="methodology-item">
+                        <h3>Performance Optimization</h3>
+                        <p>Implementation of defect passivation strategies to enhance device efficiency and long-term stability.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-analysis">
+                <h2>Research Progress</h2>
+                <div class="analysis-grid">
+                    <div class="analysis-item">
+                        <h3>Efficiency Trends</h3>
+                        <div id="efficiencyPlot" class="plot-container"></div>
+                    </div>
+                    <div class="analysis-item">
+                        <h3>Stability Analysis</h3>
+                        <div id="stabilityPlot" class="plot-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="research-highlights">
+                <h2>Key Findings</h2>
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <h3>Defect Chemistry</h3>
+                        <ul>
+                            <li>Identification of dominant defect types</li>
+                            <li>Correlation with device performance</li>
+                            <li>Novel passivation strategies</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-card">
+                        <h3>Material Innovation</h3>
+                        <ul>
+                            <li>Lead-free compositions</li>
+                            <li>Enhanced stability</li>
+                            <li>Scalable synthesis methods</li>
+                        </ul>
+                    </div>
+                    <div class="highlight-card">
+                        <h3>Device Integration</h3>
+                        <ul>
+                            <li>Optimized device architecture</li>
+                            <li>Interface engineering</li>
+                            <li>Performance validation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="projects.js"></script>
+    <script src="perovskite-research.js"></script>
+</body>
+</html>

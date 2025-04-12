@@ -3,92 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Ridha Akhsanu Sujiono | Physicist & Material Engineer</title>
+    <title>MRAS | Physicist & Material Engineer</title>
     
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" as="style">
+    <link rel="preload" href="css/physics-animations.css" as="style">
     
     <!-- Load Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Load CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/physics-animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     
     <!-- Load JavaScript -->
-    <script src="main.js" defer></script>
+    <script src="js/physics-effects.js" defer></script>
+    <script src="js/main.js" defer></script>
     <script src="https://kit.fontawesome.com/84d7adb544.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading">
-        <div class="loading-spinner"></div>
-    </div>
+    <!-- Physics-Inspired Background Elements -->
+    <div class="quantum-grid"></div>
+    <div id="particle-container"></div>
+    
+    <!-- Dynamic Energy Fields -->
+    <div class="energy-flow" style="top: 20%; left: 30%;"></div>
+    <div class="energy-flow" style="top: 40%; left: 70%;"></div>
+    <div class="energy-flow" style="top: 60%; left: 20%;"></div>
+    <div class="energy-flow" style="top: 80%; left: 80%;"></div>
 
-    <!-- Particles Background -->
-    <div id="particles-js"></div>
-
-    <!-- Header -->
-    <!-- Add theme toggle button to header -->
-    <header>
-        <nav>
-            <div class="logo">
-                <span class="animate-text">MRAS</span>
-            </div>
-            <div class="nav-controls">
-                <button class="theme-toggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <!-- Navigation -->
+    <nav class="nav-container magnetic-element">
+        <div class="nav-content">
+            <h1 class="logo wave-effect">MRAS</h1>
+            <ul class="nav-links">
+                <li><a href="#about" class="quantum-btn">About</a></li>
+                <li><a href="#experience" class="quantum-btn">Experience</a></li>
+                <li><a href="#projects" class="quantum-btn">Projects</a></li>
+                <li><a href="#contact" class="quantum-btn">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="animate-text">Muhammad Ridha Akhsanu Sujiono</h1>
-            <h2>Physicist & Material Engineer</h2>
-            <p>Bridging science, advocacy, and innovation for a sustainable future</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn hover-effect">Get in Touch</a>
-                <a href="#projects" class="btn hover-effect">View Projects</a>
+    <section class="hero-container">
+        <div class="hero-content magnetic-element">
+            <h1 class="hero-title wave-effect">Physics & Innovation</h1>
+            <p class="hero-subtitle energy-flow">Exploring the intersection of quantum mechanics, materials science, and sustainable technology</p>
+            <div class="hero-actions">
+                <a href="#projects" class="quantum-btn primary">Explore Research</a>
+                <a href="projects/index.html" class="quantum-btn secondary">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="section-content magnetic-element">
+            <h2 class="section-title wave-effect">Featured Projects</h2>
+            <div class="project-grid">
+                <a href="projects/material-modeling.html" class="project-card quantum-item">
+                    <div class="project-preview">
+                        <div class="model-container"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Material Modeling</h3>
+                        <p>Advanced computational modeling of novel materials</p>
+                    </div>
+                </a>
+                <a href="projects/ai-energy.html" class="project-card quantum-item">
+                    <div class="project-preview">
+                        <canvas class="visualization-canvas"></canvas>
+                    </div>
+                    <div class="project-content">
+                        <h3>AI for Energy Solutions</h3>
+                        <p>Machine learning applications in energy optimization</p>
+                    </div>
+                </a>
+                <a href="projects/smart-screening.html" class="project-card quantum-item">
+                    <div class="project-preview">
+                        <div class="simulation-container"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Smart Screening System</h3>
+                        <p>AI-powered material screening and analysis</p>
+                    </div>
+                </a>
+            </div>
+            <div class="view-all-container">
+                <a href="projects/index.html" class="quantum-btn secondary">View All Projects</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
-        <div class="about-content">
-            <h2 class="section-title animate-text">About Me</h2>
+        <div class="about-content magnetic-element">
+            <h2 class="section-title wave-effect">About Me</h2>
             <div class="about-grid">
-                <div class="about-text">
-                    <p>👋 Hi, I'm Akhsa!</p>
-                    <p>A physics and materials engineering student researcher passionate about transforming laboratory breakthroughs into real-world solutions. I bridge science and advocacy to build a better and sustainable future.</p>
+                <div class="about-text energy-flow">
+                    <p class="intro-text wave-effect">👋 Hi, I'm Akhsa!</p>
+                    <p class="description-text">A physics and materials engineering student researcher passionate about transforming laboratory breakthroughs into real-world solutions. I bridge science and advocacy to build a better and sustainable future.</p>
                     
-                    <h3>Current Focus</h3>
-                    <ul class="feature-list">
-                        <li>🔬 Engineering Tomorrow's Materials: Designing perovskite-inspired solar cells and sustainable tech to redefine energy access with The Knowledge Society.</li>
-                        <li>🤖 Harnessing AI for Good: Using tech at MIT's AI for Energy and AI4impact to predict climate risks and optimize renewables.</li>
-                        <li>✍️ Writing Science into Stories: Translating complex research into actionable ideas—because innovation thrives when everyone gets it, not just stay in journals.</li>
-                    </ul>
+                    <div class="focus-section magnetic-element">
+                        <h3 class="wave-effect">Current Focus</h3>
+                        <ul class="feature-list quantum-list">
+                            <li class="quantum-item">
+                                <span class="icon">🔬</span>
+                                <div class="content">
+                                    <h4>Engineering Tomorrow's Materials</h4>
+                                    <p>Designing perovskite-inspired solar cells and sustainable tech to redefine energy access with The Knowledge Society.</p>
+                                </div>
+                            </li>
+                            <li class="quantum-item">
+                                <span class="icon">🤖</span>
+                                <div class="content">
+                                    <h4>Harnessing AI for Good</h4>
+                                    <p>Using tech at MIT's AI for Energy and AI4impact to predict climate risks and optimize renewables.</p>
+                                </div>
+                            </li>
+                            <li class="quantum-item">
+                                <span class="icon">✍️</span>
+                                <div class="content">
+                                    <h4>Writing Science into Stories</h4>
+                                    <p>Translating complex research into actionable ideas—because innovation thrives when everyone gets it, not just stay in journals.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
-                    <h3>My Playgrounds</h3>
-                    <ul class="feature-list">
-                        <li>🌍 Global Advocacy: Safeguarding digital rights (@5Rights), co-designing climate policy with YOUNGO, and fighting for education equity (@Theirworld) as a Youth Ambassador.</li>
-                        <li>🚀 Cosmic Curiosity: Analyzing exoplanet data with NASA and hunting neutron stars via Einstein@Home.</li>
-                        <li>💧 Grassroots Impact: Built resilient water-harvesting systems for climate-hit villages.</li>
-                    </ul>
+                    <div class="playground-section magnetic-element">
+                        <h3 class="wave-effect">My Playgrounds</h3>
+                        <ul class="feature-list quantum-list">
+                            <li class="quantum-item">
+                                <span class="icon">🌍</span>
+                                <div class="content">
+                                    <h4>Global Advocacy</h4>
+                                    <p>Safeguarding digital rights (@5Rights), co-designing climate policy with YOUNGO, and fighting for education equity (@Theirworld) as a Youth Ambassador.</p>
+                                </div>
+                            </li>
+                            <li class="quantum-item">
+                                <span class="icon">🚀</span>
+                                <div class="content">
+                                    <h4>Cosmic Curiosity</h4>
+                                    <p>Analyzing exoplanet data with NASA and hunting neutron stars via Einstein@Home.</p>
+                                </div>
+                            </li>
+                            <li class="quantum-item">
+                                <span class="icon">💧</span>
+                                <div class="content">
+                                    <h4>Grassroots Impact</h4>
+                                    <p>Built resilient water-harvesting systems for climate-hit villages.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,27 +166,29 @@
 
     <!-- Experience Section -->
     <section id="experience" class="experience">
-        <h2 class="section-title animate-text">Experience</h2>
-        <div class="timeline">
+        <h2 class="section-title wave-effect">Experience</h2>
+        <div class="timeline quantum-timeline">
             <!-- AI for Energy Solution -->
-            <div class="timeline-item" data-aos="fade-right">
-                <div class="timeline-content hover-effect">
-                    <div class="timeline-header">
-                        <img src="images/mit-logo.png" alt="MIT Logo" class="organization-logo">
-                        <h3>AI for Energy Solution</h3>
+            <div class="timeline-item magnetic-element" data-aos="fade-right">
+                <div class="timeline-content wave-effect">
+                    <div class="timeline-header energy-flow">
+                        <div class="org-logo-container">
+                            <img src="images/mit-logo.png" alt="MIT Logo" class="organization-logo">
+                        </div>
+                        <h3 class="quantum-text">AI for Energy Solution</h3>
                         <span class="organization">Massachusetts Institute of Technology</span>
                         <p class="timeline-date">January 2025</p>
                     </div>
                     <div class="timeline-body">
                         <div class="tags">
-                            <span class="tag">AI</span>
-                            <span class="tag">Energy</span>
-                            <span class="tag">Innovation</span>
+                            <span class="tag quantum-tag">AI</span>
+                            <span class="tag quantum-tag">Energy</span>
+                            <span class="tag quantum-tag">Innovation</span>
                         </div>
-                        <ul class="achievement-list">
-                            <li>Selected for MIT's prestigious AI for Energy Solutions Program</li>
-                            <li>Developed AI-powered prototypes using low-code/no-code tools</li>
-                            <li>Collaborated with global experts in energy innovation</li>
+                        <ul class="achievement-list quantum-list">
+                            <li class="quantum-item">Selected for MIT's prestigious AI for Energy Solutions Program</li>
+                            <li class="quantum-item">Developed AI-powered prototypes using low-code/no-code tools</li>
+                            <li class="quantum-item">Collaborated with global experts in energy innovation</li>
                         </ul>
                     </div>
                 </div>
@@ -166,38 +238,42 @@
         </div>
     </section>
 
-    <!-- After About Section and before Experience Section -->
+    <!-- Skills Section -->
     <section id="skills" class="skills">
-        <h2 class="section-title animate-text">Skills & Expertise</h2>
-        <div class="skills-container">
-            <div class="skills-category" data-aos="fade-up">
-                <h3>Technical Skills</h3>
+        <h2 class="section-title wave-effect">Skills & Expertise</h2>
+        <div class="skills-container magnetic-element">
+            <div class="skills-category quantum-card" data-aos="fade-up">
+                <h3 class="wave-effect">Technical Skills</h3>
                 <div class="skill-bars">
-                    <div class="skill-bar">
-                        <div class="skill-info">
+                    <div class="skill-bar quantum-progress">
+                        <div class="skill-info energy-flow">
                             <span>Data Analysis & AI</span>
                             <span class="percentage">90%</span>
                         </div>
-                        <div class="progress-bar" data-progress="90"></div>
+                        <div class="progress-bar" data-progress="90">
+                            <div class="progress-particles"></div>
+                        </div>
                     </div>
-                    <div class="skill-bar">
-                        <div class="skill-info">
+                    <div class="skill-bar quantum-progress">
+                        <div class="skill-info energy-flow">
                             <span>Material Characterization</span>
                             <span class="percentage">85%</span>
                         </div>
-                        <div class="progress-bar" data-progress="85"></div>
+                        <div class="progress-bar" data-progress="85">
+                            <div class="progress-particles"></div>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="skills-category" data-aos="fade-up" data-aos-delay="200">
-                <h3>Research & Innovation</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Quantum Physics</span>
-                    <span class="skill-tag">Renewable Energy</span>
-                    <span class="skill-tag">Sustainable Tech</span>
-                    <span class="skill-tag">AI Applications</span>
-                    <span class="skill-tag">Scientific Writing</span>
+            <div class="skills-category quantum-card" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="wave-effect">Research & Innovation</h3>
+                <div class="skill-tags quantum-cloud">
+                    <span class="skill-tag quantum-tag magnetic-element">Quantum Physics</span>
+                    <span class="skill-tag quantum-tag magnetic-element">Renewable Energy</span>
+                    <span class="skill-tag quantum-tag magnetic-element">Sustainable Tech</span>
+                    <span class="skill-tag quantum-tag magnetic-element">AI Applications</span>
+                    <span class="skill-tag quantum-tag magnetic-element">Scientific Writing</span>
                 </div>
             </div>
         </div>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Modeling | Projects</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="../style.css" as="style">
+    
+    <!-- Load Fonts and Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Load Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body class="project-detail-page">
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html" class="animate-text">MRAS</a>
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <ul>
+                    <li><a href="index.html">Projects</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        <section class="project-hero">
+            <h1>Material Modeling Research</h1>
+            <p class="project-subtitle">Advanced computational modeling of novel materials for sustainable energy applications</p>
+        </section>
+
+        <section class="project-content">
+            <div class="visualization-section">
+                <h2>Interactive Material Structure</h2>
+                <div class="model-container" id="materialModel"></div>
+                <div class="model-controls">
+                    <button id="rotateModel">Rotate Model</button>
+                    <button id="showLattice">Show Lattice</button>
+                    <button id="showBonds">Show Bonds</button>
+                </div>
+            </div>
+
+            <div class="calculation-section">
+                <h2>Real-time Calculations</h2>
+                <div class="calculation-grid">
+                    <div class="calc-item">
+                        <h3>Band Gap Energy</h3>
+                        <div id="bandGapPlot" class="plot-container"></div>
+                    </div>
+                    <div class="calc-item">
+                        <h3>Density of States</h3>
+                        <div id="dosPlot" class="plot-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="methodology-section">
+                <h2>Research Methodology</h2>
+                <div class="methodology-grid">
+                    <div class="method-card">
+                        <h3>Computational Methods</h3>
+                        <ul>
+                            <li>Density Functional Theory (DFT)</li>
+                            <li>Molecular Dynamics Simulations</li>
+                            <li>Machine Learning Integration</li>
+                        </ul>
+                    </div>
+                    <div class="method-card">
+                        <h3>Analysis Techniques</h3>
+                        <ul>
+                            <li>Electronic Structure Analysis</li>
+                            <li>Optical Properties Calculation</li>
+                            <li>Stability Predictions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h2>Key Findings</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>Enhanced Efficiency</h3>
+                        <p>Achieved 15% improvement in theoretical conversion efficiency through band gap engineering.</p>
+                        <div class="metric-display">
+                            <span class="metric-value">15%</span>
+                            <span class="metric-label">Efficiency Increase</span>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Stability Improvement</h3>
+                        <p>Extended material lifetime by 2x through structural optimization.</p>
+                        <div class="metric-display">
+                            <span class="metric-value">2x</span>
+                            <span class="metric-label">Lifetime Extension</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" class="hover-effect"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="hover-effect"><i class="fab fa-github"></i></a>
+            <a href="#" class="hover-effect"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2024 Muhammad Ridha Akhsanu Sujiono. All rights reserved.</p>
+    </footer>
+
+    <script src="projects.js"></script>
+    <script src="material-modeling.js"></script>
+</body>
+</html>

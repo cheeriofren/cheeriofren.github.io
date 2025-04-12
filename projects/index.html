@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Muhammad Ridha Akhsanu Sujiono</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="../style.css" as="style">
+    
+    <!-- Load Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Load CSS -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="projects.css">
+    
+    <!-- Load JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="quantum-effects.js"></script>
+    <script src="projects.js"></script>
+    <script src="../main.js" defer></script>
+    <script src="https://kit.fontawesome.com/84d7adb544.js" crossorigin="anonymous"></script>
+    <script>
+        // Initialize all visualizations when the page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            initMaterialModel();
+            initEnergyVisualization();
+            initClimateSimulation();
+        });
+    </script>
+</head>
+<body class="projects-page">
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html" class="animate-text">MRAS</a>
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <ul>
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#experience">Experience</a></li>
+                    <li><a href="#" class="active">Projects</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Projects Overview -->
+    <section class="projects-overview">
+        <h1 class="section-title animate-text">My Projects</h1>
+        
+        <!-- Project Categories -->
+        <div class="project-categories">
+            <div class="category-card" data-aos="fade-up">
+                <h2>Research Projects</h2>
+                <div class="project-grid">
+                    <a href="material-modeling.html" class="project-item">
+                        <div class="project-preview">
+                            <div class="model-container" id="materialModel"></div>
+                        </div>
+                        <h3>Material Modeling</h3>
+                        <p>Advanced computational modeling of novel materials</p>
+                    </a>
+                    <!-- Add more research projects -->
+                </div>
+            </div>
+
+            <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+                <h2>Technical Projects</h2>
+                <div class="project-grid">
+                    <a href="ai-energy.html" class="project-item">
+                        <div class="project-preview">
+                            <canvas class="visualization-canvas"></canvas>
+                        </div>
+                        <h3>AI for Energy Solutions</h3>
+                        <p>Machine learning applications in energy optimization</p>
+                    </a>
+                    <!-- Add more technical projects -->
+                </div>
+            </div>
+
+            <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+                <h2>Climate Action</h2>
+                <div class="project-grid">
+                    <a href="climate-simulation.html" class="project-item">
+                        <div class="project-preview">
+                            <div class="simulation-container"></div>
+                        </div>
+                        <h3>En-ROADS Climate Simulation</h3>
+                        <p>Interactive climate policy simulation workshops</p>
+                    </a>
+                    <!-- Add more climate projects -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#" class="hover-effect"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="hover-effect"><i class="fab fa-github"></i></a>
+            <a href="#" class="hover-effect"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>&copy; 2024 Muhammad Ridha Akhsanu Sujiono. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="projects.js"></script>
+</body>
+</html>

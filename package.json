@@ -1,0 +1,25 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "A modern and responsive portfolio website for a Physics and Materials Science researcher",
+  "scripts": {
+    "dev": "npx --yes http-server . --port 8000",
+    "start": "npx --yes http-server . --port 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheeriofren/cheeriofren.github.io.git"
+  },
+  "keywords": [
+    "portfolio",
+    "physics",
+    "materials-science",
+    "research"
+  ],
+  "author": "Akhsa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cheeriofren/cheeriofren.github.io/issues"
+  },
+  "homepage": "https://cheeriofren.github.io"
+}

@@ -1,0 +1,224 @@
+:root {
+  --quantum-glow: rgba(97, 218, 251, 0.4);
+  --wave-function: rgba(74, 144, 226, 0.8);
+  --probability-field: rgba(255, 255, 255, 0.1);
+  --primary-color: #0a0a1f;
+  --secondary-color: #4a90e2;
+  --accent-color: #61dafb;
+  --text-color: #ffffff;
+  --background: #050510;
+  --grid-color: rgba(97, 218, 251, 0.1);
+  --particle-color: rgba(74, 144, 226, 0.6);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --blur-amount: 10px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glass Morphism */
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-amount));
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Particle System */
+.particle {
+  position: absolute;
+  background: var(--particle-color);
+  border-radius: 50%;
+  pointer-events: none;
+  transform-origin: center;
+  mix-blend-mode: plus-lighter;
+  filter: blur(1px);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  box-shadow: 
+    0 0 15px var(--particle-color),
+    0 0 25px rgba(97, 218, 251, 0.3);
+  animation: quantumState 12s ease-in-out infinite;
+}
+
+@keyframes quantumState {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 0.5;
+    filter: blur(1px) brightness(1);
+  }
+  25% {
+    transform: translate(25px, -20px) scale(1.3) rotate(90deg);
+    opacity: 0.8;
+    filter: blur(2px) brightness(1.2);
+  }
+  50% {
+    transform: translate(-20px, -30px) scale(1.1) rotate(180deg);
+    opacity: 0.9;
+    filter: blur(3px) brightness(1.4);
+  }
+  75% {
+    transform: translate(-25px, 20px) scale(1.2) rotate(270deg);
+    opacity: 0.7;
+    filter: blur(2px) brightness(1.2);
+  }
+}
+
+/* Quantum Grid with Depth */
+.quantum-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(rgba(97, 218, 251, 0.05) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(97, 218, 251, 0.05) 2px, transparent 2px);
+  background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
+  animation: gridPulse 20s linear infinite;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(60deg);
+  z-index: -1;
+  opacity: 0.5;
+}
+
+@keyframes gridPulse {
+  0%, 100% {
+    background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
+    opacity: 0.5;
+  }
+  50% {
+    background-size: 55px 55px, 55px 55px, 110px 110px, 110px 110px;
+    opacity: 0.3;
+  }
+}
+
+/* Enhanced Wave Effect */
+.wave-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250%;
+  height: 250%;
+  background: radial-gradient(circle, var(--accent-color) 10%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s;
+}
+
+.wave-effect:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.15;
+  animation: waveRotate 2s linear infinite;
+}
+
+@keyframes waveRotate {
+  from { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  to { transform: translate(-50%, -50%) scale(1) rotate(360deg); }
+}
+
+/* Enhanced Magnetic Field Effect */
+.magnetic-element {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.magnetic-element:hover {
+  animation: magneticPull 1.5s ease-in-out infinite;
+}
+
+@keyframes magneticPull {
+  0%, 100% {
+    transform: translateX(0) translateY(0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateX(3px) translateY(-3px) scale(1.02) rotate(1deg);
+  }
+  75% {
+    transform: translateX(-3px) translateY(3px) scale(1.02) rotate(-1deg);
+  }
+}
+
+/* Enhanced Energy Flow Lines */
+.energy-flow {
+  position: relative;
+  overflow: hidden;
+}
+
+.energy-flow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(97, 218, 251, 0.2),
+    var(--accent-color),
+    rgba(97, 218, 251, 0.2),
+    transparent
+  );
+  animation: energyFlow 3s linear infinite;
+  filter: blur(3px);
+}
+
+@keyframes energyFlow {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+/* Enhanced Quantum Buttons */
+.quantum-btn {
+  position: relative;
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--text-color);
+  padding: 12px 24px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.quantum-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--accent-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1;
+}
+
+.quantum-btn:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+.quantum-btn:hover {
+  color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(97, 218, 251, 0.3);
+  animation: quantumPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes quantumPulse {
+  0%, 100% {
+    box-shadow: 0 5px 15px rgba(97, 218, 251, 0.3);
+  }
+  50% {
+    box-shadow: 0 5px 25px rgba(97, 218, 251, 0.5);
+  }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Energy Solutions | Projects</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="../style.css" as="style">
+    
+    <!-- Load Fonts and Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Load Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly-latest.min.js"></script>
+    <script src="ai-energy.js" defer></script>
+</head>
+<body class="project-detail-page">
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html" class="animate-text">MRAS</a>
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <ul>
+                    <li><a href="index.html">Projects</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="project-detail">
+        <section class="project-hero">
+            <h1>AI for Energy Solutions</h1>
+            <p class="project-subtitle">Machine learning applications in energy optimization and smart grid management</p>
+        </section>
+
+        <section class="project-content">
+            <div class="visualization-section">
+                <h2>Energy Consumption Prediction</h2>
+                <div class="visualization-container">
+                    <canvas class="visualization-canvas"></canvas>
+                    <div class="visualization-controls">
+                        <button id="togglePrediction">Toggle Prediction</button>
+                        <button id="showPatterns">Show Patterns</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="methodology-section">
+                <h2>AI Methodology</h2>
+                <div class="methodology-grid">
+                    <div class="method-card">
+                        <h3>Machine Learning Models</h3>
+                        <ul>
+                            <li>Deep Neural Networks</li>
+                            <li>Time Series Forecasting</li>
+                            <li>Reinforcement Learning</li>
+                        </ul>
+                    </div>
+                    <div class="method-card">
+                        <h3>Data Processing</h3>
+                        <ul>
+                            <li>Real-time Data Integration</li>
+                            <li>Feature Engineering</li>
+                            <li>Pattern Recognition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <h2>Project Impact</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3>Energy Efficiency</h3>
+                        <p>20% reduction in energy consumption through AI-driven optimization</p>
+                        <div class="metric-display" id="efficiencyMetric"></div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Cost Savings</h3>
+                        <p>Annual cost reduction of $1.2M in large-scale deployments</p>
+                        <div class="metric-display" id="savingsMetric"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Muhammad Ridha Akhsanu Sujiono. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StressCare - AI-Powered Stress Management</title>
+    <link rel="stylesheet" href="projects.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="stress-care.js"></script>
+    <script>
+        // Initialize visualization and monitoring when the page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            initVisualization();
+            // Initialize biometric monitoring
+            setInterval(() => {
+                updateBiometrics();
+                updateCharts();
+            }, 1000);
+        });
+    </script>
+</head>
+<body>
+    <div class="project-container">
+        <header class="project-header">
+            <h1>StressCare: A Personal and Holistic Stress Management Innovation</h1>
+            <div class="project-meta">
+                <span>Jan 2024 - Apr 2024</span>
+                <span>Associated with Social Connect</span>
+            </div>
+        </header>
+
+        <section class="project-overview">
+            <p>Mental health issues, particularly stress, are pervasive challenges in our fast-paced world, significantly affecting well-being and productivity. Traditional stress management solutions often lack integration and personalization, focusing only on isolated aspects of stress. This presents an opportunity for a more cohesive approach.</p>
+        </section>
+
+        <section class="visualization-section">
+            <h2>Real-Time Stress Monitoring</h2>
+            <div class="model-container">
+                <div id="stressModel" class="3d-model"></div>
+                <div class="model-controls">
+                    <button id="toggleBrain">Toggle Brain Model</button>
+                    <button id="toggleIndicators">Toggle Stress Indicators</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="biometrics-dashboard">
+            <h2>Biometric Indicators</h2>
+            <div class="metrics-container">
+                <div class="metric-card">
+                    <h3>Heart Rate</h3>
+                    <p><span id="heartRate">75</span> BPM</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Stress Level</h3>
+                    <p><span id="stressLevel">50</span>%</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Sleep Quality</h3>
+                    <p><span id="sleepQuality">85</span>%</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-visualization">
+            <div class="chart-container">
+                <div id="stressTimeline" class="chart"></div>
+                <div id="sleepChart" class="chart"></div>
+            </div>
+        </section>
+
+        <section class="project-details">
+            <h2>Innovation Overview</h2>
+            <p>Introducing StressCare, an innovative platform designed for holistic stress management. By leveraging advanced IoT technology and personalized algorithms, StressCare continuously monitors physiological indicators (like heart rate variability and sleep patterns), behavioral patterns, and psychological factors. This comprehensive data enables the development of tailored strategies that adapt to individual needs, enhancing the effectiveness of stress management.</p>
+
+            <h2>Recognition</h2>
+            <p>Awarded a Gold Medal by the Indonesian Young Scientists Association (IYSA) at the Invention and Innovation Fair 2024, StressCare is dedicated to empowering individuals with the tools and insights for proactive stress management, fostering resilience, and improving overall mental well-being.</p>
+        </section>
+    </div>
+
+</body>
+</html>

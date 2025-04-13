@@ -76,13 +76,32 @@ class PhysicsSystem {
         particleContainer.style.pointerEvents = 'none';
         particleContainer.style.zIndex = '0';
         document.body.appendChild(particleContainer);
+ and 
+        // Create quantum field visualization
+        const quantumField = document.createElement('canvas');
+        quantumField.id = 'quantum-field';
+        quantumField.style.position = 'fixed';
+        quantumField.style.top = '0';
+        quantumField.style.left = '0';
+        quantumField.style.width = '100%';
+        quantumField.style.height = '100%';
+        quantumField.style.pointerEvents = 'none';
+        quantumField.style.zIndex = '-1';
+        quantumField.style.opacity = '0.3';
+        document.body.appendChild(quantumField);
+        this.quantumField = quantumField;
+        this.quantumCtx = quantumField.getContext('2d');
 
-        for (let i = 0; i < 100; i++) {
+        // Initialize quantum field
+        this.initQuantumField();
+
+        for (let i = 0; i < 150; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
-            const size = Math.random() * 8 + 2;
+            const size = Math.random() * 12 + 4;
             particle.style.width = size + 'px';
             particle.style.height = size + 'px';
+            particle.style.background = `radial-gradient(circle at center, rgba(97, 218, 251, ${Math.random() * 0.3 + 0.7}), rgba(74, 144, 226, ${Math.random() * 0.2 + 0.3})`;
             particle.style.left = Math.random() * 100 + '%';
             particle.style.top = Math.random() * 100 + '%';
             particle.style.opacity = Math.random() * 0.5 + 0.3;
@@ -148,9 +167,71 @@ class PhysicsSystem {
         element.style.transform = 'translate(0, 0)';
     }
 
+    initQuantumField() {
+        this.quantumField.width = window.innerWidth;
+        this.quantumField.height = window.innerHeight;
+        this.wavePoints = [];
+        
+        // Create wave points
+        for (let i = 0; i < 5; i++) {
+            this.wavePoints.push({
+                x: Math.random() * this.quantumField.width,
+                y: Math.random() * this.quantumField.height,
+                phase: Math.random() * Math.PI * 2,
+                frequency: Math.random() * 0.02 + 0.01,
+                amplitude: Math.random() * 50 + 25
+            });
+        }
+    }
+
+    drawQuantumField() {
+        this.quantumCtx.clearRect(0, 0, this.quantumField.width, this.quantumField.height);
+        
+        // Create interference pattern
+        const imageData = this.quantumCtx.createImageData(this.quantumField.width, this.quantumField.height);
+        const data = imageData.data;
+        
+        for (let x = 0; x < this.quantumField.width; x += 4) {
+            for (let y = 0; y < this.quantumField.height; y += 4) {
+                let interference = 0;
+                
+                this.wavePoints.forEach(point => {
+                    const dx = x - point.x;
+                    const dy = y - point.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    interference += Math.sin(distance * point.frequency + point.phase) * point.amplitude;
+                });
+                
+                const index = (y * this.quantumField.width + x) * 4;
+                const intensity = Math.abs(interference) / 200;
+                
+                data[index] = 97;     // R
+                data[index + 1] = 218; // G
+                data[index + 2] = 251; // B
+                data[index + 3] = intensity * 255;
+            }
+        }
+        
+        this.quantumCtx.putImageData(imageData, 0, 0);
+        
+        // Update wave points
+        this.wavePoints.forEach(point => {
+            point.phase += 0.02;
+            point.x += Math.sin(this.time) * 0.5;
+            point.y += Math.cos(this.time) * 0.5;
+            
+            // Wrap around edges
+            point.x = (point.x + this.quantumField.width) % this.quantumField.width;
+            point.y = (point.y + this.quantumField.height) % this.quantumField.height;
+        });
+    }
+
     animate() {
         this.time += 0.016; // Assuming 60fps
         this.wavePhase += 0.02;
+        
+        // Update quantum field
+        this.drawQuantumField();
 
         this.particles.forEach(particle => {
             const quantum = particle.quantumState;
